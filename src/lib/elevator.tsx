@@ -18,10 +18,16 @@ const waitForScrollEnd = (cb: () => void) => {
     window.removeEventListener('scrollend', onEnd)
     clearTimeout(timer)
   }
-  const onEnd  = () => { clear(); cb() }
-  const reset = () => { clearTimeout(timer); timer = window.setTimeout(onEnd, 480) }
+  const onEnd = () => {
+    clear();
+    cb()
+  }
+  const reset = () => {
+    clearTimeout(timer);
+    timer = window.setTimeout(onEnd, 480)
+  }
   has
-    ? window.addEventListener('scrollend', onEnd, { once: true })
+    ? window.addEventListener('scrollend', onEnd, {once: true})
     : (window.addEventListener('scroll', reset), reset())
 }
 
@@ -72,6 +78,7 @@ export const Elevator: FC<ElevatorProps> = ({
   const isProgrammatic = useRef(false)
   const offsetTopRef = useRef(0)
 
+  console.log("paddingTab: ", paddingTab)
   /* ---------- state ---------- */
   const [active, setActive] = useState(0)
   const [deltaTop, setDeltaTop] = useState(0)
@@ -80,7 +87,7 @@ export const Elevator: FC<ElevatorProps> = ({
   const calcDeltaTop = useCallback(() => {
     const tabH = tabRefs.current[0]?.offsetHeight ?? navbarHeight ?? 75
     return tabH + (paddingTab ?? 0)
-  }, [])
+  }, [navbarHeight, paddingTab])
 
   /* ---------- 初始化 ---------- */
   useLayoutEffect(() => {
@@ -98,10 +105,10 @@ export const Elevator: FC<ElevatorProps> = ({
   /* ---------- 居中当前 tab ---------- */
   const centerTab = useCallback((idx: number, smooth = false) => {
     const rail = elRef.current
-    const cur  = tabRefs.current[idx]
+    const cur = tabRefs.current[idx]
     if (!rail || !cur) return
     const left = Math.max(cur.offsetLeft - (rail.clientWidth - cur.offsetWidth) / 2, 0)
-    smooth ? rail.scrollTo({ left, behavior: 'smooth' }) : (rail.scrollLeft = left)
+    smooth ? rail.scrollTo({left, behavior: 'smooth'}) : (rail.scrollLeft = left)
   }, [])
 
   /* ---------- ScrollSpy ---------- */
@@ -116,20 +123,27 @@ export const Elevator: FC<ElevatorProps> = ({
       setActive(idx)
       ticking = false
     }
-    const onScroll = () => { if (!ticking) { window.requestAnimationFrame(spy); ticking = true } }
-    window.addEventListener('scroll', onScroll, { passive: true })
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(spy);
+        ticking = true
+      }
+    }
+    window.addEventListener('scroll', onScroll, {passive: true})
     return () => window.removeEventListener('scroll', onScroll)
   }, [deltaTop])
 
   /* ---------- scrollEnd：非手动时自动居中 ---------- */
   useEffect(() => {
-    waitForScrollEnd(() => { if (!isProgrammatic.current) centerTab(active, true) })
+    waitForScrollEnd(() => {
+      if (!isProgrammatic.current) centerTab(active, true)
+    })
   }, [active, centerTab])
 
   /* ---------- 视口尺寸变化 ---------- */
   useEffect(() => {
     const onResize = () => setDeltaTop(calcDeltaTop())
-    window.addEventListener('resize', onResize, { passive: true })
+    window.addEventListener('resize', onResize, {passive: true})
     return () => window.removeEventListener('resize', onResize)
   }, [calcDeltaTop])
 
@@ -143,7 +157,11 @@ export const Elevator: FC<ElevatorProps> = ({
       const navH = paddingTab ?? 0
       if (placeholderRef.current)
         placeholderRef.current.style.height = `${el.offsetHeight - navH}px`
-      if (!el.classList.contains('fixed')) {
+      if (el.classList.contains('fixed')) {
+        // 已吸顶 → 只更新 paddingTop 即刻生效
+        el.style.paddingTop = `${navH}px`
+      } else {
+        // 未吸顶 → 重新计算触发点
         offsetTopRef.current = el.getBoundingClientRect().top + window.scrollY - navH
       }
       setDeltaTop(calcDeltaTop())
@@ -173,20 +191,24 @@ export const Elevator: FC<ElevatorProps> = ({
       }
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('scroll', onScroll, {passive: true})
     return () => {
       ro.disconnect()
       window.removeEventListener('scroll', onScroll)
     }
-  }, [calcDeltaTop])
+  }, [calcDeltaTop, paddingTab])
 
   /* ---------- 点击 tab ---------- */
   const handleClick = (idx: number, id: string) => {
-    const target = document.getElementById(id); if (!target) return
+    const target = document.getElementById(id);
+    if (!target) return
     isProgrammatic.current = true
     const top = target.getBoundingClientRect().top + window.scrollY - deltaTop
-    window.scrollTo({ top, behavior: 'smooth' })
-    waitForScrollEnd(() => { isProgrammatic.current = false; centerTab(idx, true) })
+    window.scrollTo({top, behavior: 'smooth'})
+    waitForScrollEnd(() => {
+      isProgrammatic.current = false;
+      centerTab(idx, true)
+    })
   }
 
   /* ---------- render ---------- */
@@ -198,7 +220,7 @@ export const Elevator: FC<ElevatorProps> = ({
             key={t.id}
             ref={el => (tabRefs.current[i] = el)}
             className="elevator-item-wrapper"
-            style={{ flex: `0 0 calc(100% / ${number})` }}
+            style={{flex: `0 0 calc(100% / ${number})`}}
             onClick={() => handleClick(i, t.id)}
           >
             <img
