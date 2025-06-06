@@ -13,7 +13,7 @@ export default defineConfig(({mode }) => {
       isLib && dts({ insertTypesEntry: true })
     ].filter(Boolean),
 
-    base: isLib ? '/' : '/elevator/',
+    base: isLib ? '/' : '/sticky-elevator/',
 
     build: isLib
       ? {
