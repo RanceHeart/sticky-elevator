@@ -1,0 +1,43 @@
+{
+  "name": "@ranceheart/sticky-elevator",
+  "version": "0.1.0",
+  "homepage": "https://ranceheart.github.io/sticky-elevator",
+  "description": "A lightweight scroll‑spy elevator nav for React",
+  "main": "dist/elevator.cjs.js",
+  "module": "dist/elevator.es.js",
+  "unpkg": "dist/elevator.umd.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --mode lib",
+    "build:demo": "vite build --mode demo",
+    "gh:deploy": "yarn build:demo && gh-pages -d gh-pages"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "resize-observer-polyfill": "^1.5.1",
+    "smoothscroll-polyfill": "^0.4.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/smoothscroll-polyfill": "^0.3.4",
+    "@vitejs/plugin-react": "^4.5.1",
+    "gh-pages": "^6.3.0",
+    "sass": "^1.77.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.2.0",
+    "vite-plugin-dts": "^3.8.0"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "license": "MIT"
+}

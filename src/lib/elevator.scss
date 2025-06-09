@@ -1,0 +1,50 @@
+.elevator {
+  position: relative;          // 代替 sticky
+  z-index: 10;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 728px;          // 同 VW_BASE
+  margin: 0 auto;
+  &::-webkit-scrollbar { display: none; }
+
+  /* 吸顶后样式 */
+  &.fixed {
+    position: fixed;
+    max-width: 728px;          // 同 VW_BASE
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto; // 吸顶状态也保持居中
+  }
+
+  /* 如需安全区内边距，可自行删改 */
+  &.safe-padding {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  &-wrapper {
+    display: flex;
+    width: 100%;
+    white-space: nowrap; // 防止撑开出白边
+    box-sizing: content-box;
+    padding: 0;          // ✅ 确保无 padding
+    margin: 0;           // ✅ 确保无 margin
+    gap: 0;              // ✅ 确保无空隙
+  }
+
+  &-item-wrapper {
+    display: flex;
+  }
+
+  &-item {
+    display: block;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: background-position .2s;
+  }
+
+  /* 激活态示例（可自定义） */
+  &-item-active {
+  }
+}
