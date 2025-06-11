@@ -43,9 +43,9 @@ yarn gh:deploy
 ## 📦 Installation
 
 ```bash
-npm install react-sticky-elevator
+npm install @ranceheart/sticky-elevator
 # or
-yarn add react-sticky-elevator
+yarn add @ranceheart/sticky-elevator
 ```
 
 ---
