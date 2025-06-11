@@ -6,6 +6,7 @@ import React, {
 import clsx from 'clsx'
 import ResizeObserver from 'resize-observer-polyfill'
 import smoothscroll from 'smoothscroll-polyfill'
+import {alignType} from "../main";
 
 smoothscroll.polyfill()
 
@@ -39,6 +40,9 @@ export type ElevatorProps = {
   number: number                // 每屏 tab 数
   navbarHeight?: number         // 自定义 导航栏高度
   paddingTab?: number           // 自定义 距屏幕最上边间距
+  align: alignType              // 默认 center
+  width?: string      // 超过该宽度才限制 proportion，默认无限制
+  zIndex?: number               // 默认 10
   // customise classname/style
   className?: string
   style?: React.CSSProperties
@@ -52,6 +56,9 @@ export const Elevator: FC<ElevatorProps> = ({
                                               number,
                                               navbarHeight,
                                               paddingTab,
+                                              align,
+                                              width,
+                                              zIndex,
                                               className,
                                               style
                                             }) => {
@@ -70,6 +77,24 @@ export const Elevator: FC<ElevatorProps> = ({
     })
   }, [anchorPoints, anchorImages, anchorActiveImages])
 
+  const computedStyle = useMemo(() => {
+    const w = `${width ?? "728px"}`
+
+    const margin = align === 'left'
+      ? '0 auto 0 0'
+      : align === 'right'
+        ? '0 0 0 auto'
+        : '0 auto'
+
+    return {
+      width: w,
+      margin,
+      zIndex: zIndex ?? 10,
+      ...style,
+    } as React.CSSProperties
+  }, [width, align, zIndex, style])
+
+
   /* ---------- refs ---------- */
   const tabRefs = useRef<(HTMLDivElement | null)[]>([])
   const sectionRefs = useRef<(HTMLElement | null)[]>([])
@@ -78,7 +103,6 @@ export const Elevator: FC<ElevatorProps> = ({
   const isProgrammatic = useRef(false)
   const offsetTopRef = useRef(0)
 
-  console.log("paddingTab: ", paddingTab)
   /* ---------- state ---------- */
   const [active, setActive] = useState(0)
   const [deltaTop, setDeltaTop] = useState(0)
@@ -216,7 +240,7 @@ export const Elevator: FC<ElevatorProps> = ({
 
   /* ---------- render ---------- */
   return (
-    <div ref={elRef} className={clsx('elevator', className)} style={style}>
+    <div ref={elRef} className={clsx('elevator', className)} style={{...computedStyle, ...style}}>
       <div className="elevator-wrapper">
         {tabs.map((t, i) => (
           <div

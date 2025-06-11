@@ -2,19 +2,27 @@
 
 ---
 
-# 🛗 Elevator 电梯导航组件
+# 🛗 ElevatorNav – 滚动锚点导航组件
 
-一个轻量级的 React 视觉锚点导航（scroll-spy）组件。
+一个轻量级的 React 视觉锚点导航（scroll-spy）组件。position: sticky在某些情况不好使(父元素要求太多), 在复杂的项目里不好改父元素的情况下，用这个替代需要sticky的导航栏
 
-![demo](https://your-name.github.io/elevator/demo-preview.gif)
+### 📌 Demo 1: 锚点自动吸附 + 自动滚动定位
+![demo1-auto-flow-position](./assets/demo1-auto-flow-position.gif)
+
+### 📌 Demo 2: 点击跳转锚点 + 滑动切换图片显示
+![demo2-click-moveto](./assets/demo2-click-moveto.gif)
+
+### 📌 Demo 3: 参数自定义效果预览（tab 数量 / 宽度 / padding）
+![demo3-param](./assets/demo3-param.gif)
 
 > 🧭 本组件是对 `position: sticky` 导航条的现代替代方案，专为解决 sticky 在某些环境中失效的问题而设计，比如 iOS WebView、可滚动模态框、嵌套容器等场景。采用 `position: fixed` + 占位补偿，确保行为一致、可靠。
 
 ---
 
-## 🚀 在线演示
+## 🎬 在线演示
 
-👉 [查看 Demo](https://ranceheart.github.io/sticky-elevator/)
+#### 👉 [示例](https://ranceheart.github.io/sticky-elevator/)
+#### 👉 [示例带参数](https://ranceheart.github.io/sticky-elevator/?debug=1)
 
 本地运行：
 
@@ -35,9 +43,9 @@ yarn gh:deploy
 ## 📦 安装
 
 ```bash
-npm install @your-scope/elevator
+npm install react-sticky-elevator
 # 或者
-yarn add @your-scope/elevator
+yarn add react-sticky-elevator
 ```
 
 ---
@@ -45,7 +53,7 @@ yarn add @your-scope/elevator
 ## 🔧 使用方法
 
 ```tsx
-import { Elevator } from '@your-scope/elevator';
+import { Elevator } from 'react-sticky-elevator'
 
 const anchors = ['section1', 'section2', 'section3'];
 const imgs = anchors.map(id => `/images/${id}.png`);
