@@ -1,10 +1,39 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom/client';
 import { Elevator } from './lib/elevator';
 import './lib/elevator.scss';
+import {Leva, useControls} from "leva";
 
+export type alignType = ("center" | "left" | "right" | undefined)
 const App = () => {
-  const { number, paddingTab } = {number: 4.5, paddingTab: 0}
+  const search = new URLSearchParams(window.location.search);
+  const isDebug = search.get('debug') === '1';
+  const [maxWidth, setMaxWidth] = useState(window.innerWidth)
+
+  useEffect(() => {
+    const update = () => setMaxWidth(window.innerWidth)
+    window.addEventListener('resize', update)
+    return () => window.removeEventListener('resize', update)
+  }, [])
+
+  let number = 5.5;
+  let paddingTab = 0;
+  let widthInPx = 728;
+  let zIndex = 10;
+  let align: alignType = 'center';
+
+  if (isDebug) {
+    ({ number, paddingTab, widthInPx, zIndex, align } = useControls({
+      number: { value: number, min: 3, max: 8, step: 0.5 },
+      paddingTab: { value: paddingTab, min: 0, max: 30, step: 1 },
+      widthInPx: { value: 728, min: 250, max: maxWidth, step: 1 },
+      zIndex: { value: zIndex, min: 1, max: 999, step: 1 },
+      align: {
+        options: ['left', 'center', 'right'] as alignType[],
+        value: align as alignType,
+      },
+    }));
+  }
 
   const anchors = ['section1', 'section2', 'section3', 'section4', 'section5'];
   const imgs = anchors.map(id =>
@@ -58,7 +87,10 @@ const App = () => {
         anchorImages={imgs}
         anchorActiveImages={imgsActive}
         number={number}
+        width={widthInPx + "px"}
         paddingTab={paddingTab}
+        zIndex={zIndex}
+        align={align as alignType}
       />
 
       {anchors.map((id, idx) => (
@@ -84,5 +116,10 @@ const App = () => {
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App/>
+    <Leva
+      titleBar={{
+        position: { x: 0, y: window.innerHeight - 300 }, // left + bottom（等效左下角）
+      }}
+    />
   </React.StrictMode>
 );

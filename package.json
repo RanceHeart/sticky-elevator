@@ -1,8 +1,9 @@
 {
-  "name": "@ranceheart/sticky-elevator",
-  "version": "0.1.5",
-  "homepage": "https://ranceheart.github.io/sticky-elevator",
+  "name": "react-sticky-elevator",
+  "version": "0.1.6",
+  "homepage": "https://ranceheart.github.io/react-sticky-elevator",
   "description": "A lightweight scroll‑spy elevator nav for React",
+  "readmeFilename": "README.zh-CN.md",
   "main": "dist/elevator.cjs.js",
   "module": "dist/elevator.es.js",
   "unpkg": "dist/elevator.umd.js",
@@ -34,7 +35,8 @@
     "typescript": "^5.3.3",
     "vite": "^5.2.0",
     "vite-plugin-css-injected-by-js": "^3.5.2",
-    "vite-plugin-dts": "^3.8.0"
+    "vite-plugin-dts": "^3.8.0",
+    "leva": "^0.10.0"
   },
   "peerDependencies": {
     "react": ">=18",

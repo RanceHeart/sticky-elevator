@@ -2,19 +2,27 @@
 
 ---
 
-# 🛗 Elevator
+# 🛗 ElevatorNav – Scroll Spy Navigation Component
 
 A lightweight, visual scroll‑spy elevator navigation component for React.
 
-![demo](https://your-name.github.io/elevator/demo-preview.gif)
+### 📌 Demo 1: Auto anchor snapping with scroll position tracking
+![demo1-auto-flow-position](./assets/demo1-auto-flow-position.gif)
+
+### 📌 Demo 2: Click to navigate anchor + dynamic image switching
+![demo2-click-moveto](./assets/demo2-click-moveto.gif)
+
+### 📌 Demo 3: Parameter preview (tab count / width / padding)
+![demo3-param](./assets/demo3-param.gif)
 
 > 🧭 This component is a modern alternative to `position: sticky` navigation bars, specifically built to **avoid issues where sticky fails**, such as inside iOS WebViews, scrollable modals, or nested containers. It uses `position: fixed` + placeholder compensation for full reliability.
 
 ---
 
-## 🚀 Live Demo
+## 🎬 Live Previews
 
-👉 [View Demo](https://ranceheart.github.io/sticky-elevator/)
+#### 👉 [View Demo](https://ranceheart.github.io/sticky-elevator/)
+#### 👉 [View Demo with param](https://ranceheart.github.io/sticky-elevator/?debug=1)
 
 To try it locally:
 
@@ -35,9 +43,9 @@ yarn gh:deploy
 ## 📦 Installation
 
 ```bash
-npm install @your-scope/elevator
+npm install react-sticky-elevator
 # or
-yarn add @your-scope/elevator
+yarn add react-sticky-elevator
 ```
 
 ---
@@ -45,7 +53,7 @@ yarn add @your-scope/elevator
 ## 🔧 Usage
 
 ```tsx
-import { Elevator } from '@your-scope/elevator';
+import { Elevator } from 'react-sticky-elevator'
 
 const anchors = ['section1', 'section2', 'section3'];
 const imgs = anchors.map(id => `/images/${id}.png`);
@@ -56,7 +64,7 @@ const imgsActive = anchors.map(id => `/images/${id}-active.png`);
   anchorImages={imgs}
   anchorActiveImages={imgsActive}
   number={3}
-  paddingTab={12}
+  paddingTab={0}
 />
 ```
 

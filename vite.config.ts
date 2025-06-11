@@ -15,7 +15,7 @@ export default defineConfig(({mode }) => {
       isLib && dts({ insertTypesEntry: true })
     ].filter(Boolean),
 
-    base: isLib ? '/' : '/sticky-elevator/',
+    base: isLib ? '/' : '/react-sticky-elevator/',
 
     build: isLib
       ? {
