@@ -2,17 +2,21 @@
 <summary><sub>🌐 点击展开中文说明（Click to view Chinese）</sub></summary>
 
 ---
+
 # 🛗 ElevatorNav – 滚动锚点导航组件
 
 一个轻量级的 React 视觉锚点导航（scroll-spy）组件。position: sticky 在某些情况不好使（父元素要求太多），在复杂项目中不好改父元素时，可用此组件替代导航栏行为。
 
 ### 📌 Demo 1: 锚点自动吸附 + 自动滚动定位
+
 ![demo1-auto-flow-position](https://raw.githubusercontent.com/RanceHeart/sticky-elevator/main/assets/demo1-auto-flow-position.gif)
 
 ### 📌 Demo 2: 点击跳转锚点 + 滑动切换图片显示
+
 ![demo2-click-moveto](https://raw.githubusercontent.com/RanceHeart/sticky-elevator/main/assets/demo2-click-moveto.gif)
 
 ### 📌 Demo 3: 参数自定义效果预览（tab 数量 / 宽度 / padding）
+
 ![demo3-param](https://raw.githubusercontent.com/RanceHeart/sticky-elevator/main/assets/demo3-param.gif)
 
 ---
@@ -20,6 +24,7 @@
 ## 🎬 在线演示
 
 #### 👉 [示例](https://ranceheart.github.io/sticky-elevator/)
+
 #### 👉 [示例带参数](https://ranceheart.github.io/sticky-elevator/?debug=1)
 
 本地运行：
@@ -51,7 +56,7 @@ yarn add @ranceheart/sticky-elevator
 ## 🔧 使用方法
 
 ```tsx
-import { Elevator } from '@ranceheart/sticky-elevator'
+import {Elevator} from '@ranceheart/sticky-elevator'
 
 const anchors = ['section1', 'section2', 'section3'];
 const imgs = anchors.map(id => `/images/${id}.png`);
@@ -69,6 +74,7 @@ const imgsActive = anchors.map(id => `/images/${id}-active.png`);
 确保页面中有对应的 `id` 区块：
 
 ```html
+
 <section id="section1">...</section>
 <section id="section2">...</section>
 <section id="section3">...</section>
@@ -78,16 +84,19 @@ const imgsActive = anchors.map(id => `/images/${id}-active.png`);
 
 ## ⚙️ 参数说明
 
-| 属性名                | 类型            | 说明                                                       |
-|---------------------|----------------|------------------------------------------------------------|
-| `anchorPoints`      | `string[]`     | 要跳转和跟踪的锚点 ID 列表                                |
-| `anchorImages`      | `string[]`     | 普通状态下的 tab 图像                                      |
-| `anchorActiveImages`| `string[]`     | 激活状态的 tab 图像（如未传则默认使用 `anchorImages`）     |
-| `number`            | `number`       | 每屏显示的 tab 数量                                        |
-| `paddingTab`        | `number`       | 固定状态下顶部内边距（例如避开导航条）                    |
-| `navbarHeight`      | `number`       | 可选，外部固定导航栏高度，默认为 50px                     |
-| `className`         | `string`       | 自定义容器类名                                             |
-| `style`             | `CSSProperties`| 自定义内联样式                                             |
+| 属性名                  | 类型                              | 说明                                     |
+|----------------------|---------------------------------|----------------------------------------|
+| `anchorPoints`       | `string[]`                      | 要跳转和跟踪的 section ID 列表                  |
+| `anchorImages`       | `string[]`                      | 默认状态的 tab 图像 URL 列表                    |
+| `anchorActiveImages` | `string[]`                      | 激活状态下的 tab 图像 URL，缺省则使用 `anchorImages` |
+| `number`             | `number`                        | 屏幕显示 tab 数量（自动按比例宽度）                   |
+| `paddingTab`         | `number`                        | 顶部 padding 值（吸顶后距页面顶部距离）               |
+| `navbarHeight`       | `number`                        | 可选项，tab 高度默认自动识别，如异常可手动设置              |
+| `align`              | `'left' or 'center' or 'right'` | 吸顶后 tab 对齐方式（默认 `center`）              |
+| `width`              | `string`                        | tab 容器最大宽度，如 `728px`                   |
+| `zIndex`             | `number`                        | 吸顶时的 `z-index` 层级，默认 10                |
+| `className`          | `string`                        | 外层自定义类名                                |
+| `style`              | `CSSProperties`                 | 外层自定义行内样式                              |
 
 ---
 
@@ -136,21 +145,27 @@ MIT © [@RanceHeart](https://github.com/RanceHeart)
 A lightweight, visual scroll‑spy elevator navigation component for React.
 
 ### 📌 Demo 1: Auto anchor snapping with scroll position tracking
+
 ![demo1-auto-flow-position](https://raw.githubusercontent.com/RanceHeart/sticky-elevator/main/assets/demo1-auto-flow-position.gif)
 
 ### 📌 Demo 2: Click to navigate anchor + dynamic image switching
+
 ![demo2-click-moveto](https://raw.githubusercontent.com/RanceHeart/sticky-elevator/main/assets/demo2-click-moveto.gif)
 
 ### 📌 Demo 3: Parameter preview (tab count / width / padding)
+
 ![demo3-param](https://raw.githubusercontent.com/RanceHeart/sticky-elevator/main/assets/demo3-param.gif)
 
-> 🧭 This component is a modern alternative to `position: sticky` navigation bars, specifically built to **avoid issues where sticky fails**, such as inside iOS WebViews, scrollable modals, or nested containers. It uses `position: fixed` + placeholder compensation for full reliability.
+> 🧭 This component is a modern alternative to `position: sticky` navigation bars, specifically built to **avoid issues
+where sticky fails**, such as inside iOS WebViews, scrollable modals, or nested containers. It uses `position: fixed` +
+> placeholder compensation for full reliability.
 
 ---
 
 ## 🎬 Live Previews
 
 #### 👉 [View Demo](https://ranceheart.github.io/sticky-elevator/)
+
 #### 👉 [View Demo with param](https://ranceheart.github.io/sticky-elevator/?debug=1)
 
 To try it locally:
@@ -182,7 +197,7 @@ yarn add @ranceheart/sticky-elevator
 ## 🔧 Usage
 
 ```tsx
-import { Elevator } from '@ranceheart/sticky-elevator'
+import {Elevator} from '@ranceheart/sticky-elevator'
 
 const anchors = ['section1', 'section2', 'section3'];
 const imgs = anchors.map(id => `/images/${id}.png`);
@@ -200,6 +215,7 @@ const imgsActive = anchors.map(id => `/images/${id}-active.png`);
 Make sure your page contains sections with matching `id`s:
 
 ```html
+
 <section id="section1">...</section>
 <section id="section2">...</section>
 <section id="section3">...</section>
@@ -209,16 +225,19 @@ Make sure your page contains sections with matching `id`s:
 
 ## ⚙️ Props
 
-| Prop               | Type              | Description                                                 |
-|--------------------|-------------------|-------------------------------------------------------------|
-| `anchorPoints`     | `string[]`        | Section IDs the elevator should scroll to and track         |
-| `anchorImages`     | `string[]`        | Normal tab images                                           |
-| `anchorActiveImages` | `string[]`      | Active tab images (fallbacks to `anchorImages` if missing)  |
-| `number`           | `number`          | How many tabs to show per screen                            |
-| `paddingTab`       | `number`          | Top padding when fixed (e.g., to avoid navbar overlap)      |
-| `navbarHeight`     | `number`          | Optional height of external fixed nav (default: 50px)       |
-| `className`        | `string`          | Additional class name for outer container                   |
-| `style`            | `CSSProperties`   | Inline styles for elevator container                        |
+| Prop                 | Type                            | Description                                              |
+|----------------------|---------------------------------|----------------------------------------------------------|
+| `anchorPoints`       | `string[]`                      | Section IDs to scroll to and track                       |
+| `anchorImages`       | `string[]`                      | Tab image URLs in normal state                           |
+| `anchorActiveImages` | `string[]`                      | Tab image URLs when active (fallbacks to `anchorImages`) |
+| `number`             | `number`                        | Number of tabs visible on screen (evenly spaced)         |
+| `paddingTab`         | `number`                        | Top padding in fixed state (e.g., avoid navbar overlap)  |
+| `navbarHeight`       | `number`                        | Optional tab height override (autodetected by default)   |
+| `align`              | `'left' or 'center' or 'right'` | Tab alignment when fixed (default: center)               |
+| `width`              | `string`                        | Max width of tab container, e.g., `"728px"`              |
+| `zIndex`             | `number`                        | `z-index` in fixed state (default: 10)                   |
+| `className`          | `string`                        | Custom class name for outer container                    |
+| `style`              | `CSSProperties`                 | Custom inline styles for outer container                 |
 
 ---
 
@@ -241,7 +260,8 @@ Make sure your page contains sections with matching `id`s:
 - In scrollable modals or hybrid apps
 - On older Android browser engines
 
-🛗 Elevator avoids these by **using `fixed` positioning with intelligent placeholder elements**, so your layout stays stable and predictable.
+🛗 Elevator avoids these by **using `fixed` positioning with intelligent placeholder elements**, so your layout stays
+stable and predictable.
 
 ---
 

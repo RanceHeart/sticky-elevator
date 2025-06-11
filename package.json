@@ -1,6 +1,6 @@
 {
   "name": "@ranceheart/sticky-elevator",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "homepage": "https://ranceheart.github.io/sticky-elevator",
   "description": "A lightweight scroll‑spy elevator nav for React",
   "readmeFilename": "README.md",
@@ -46,5 +46,27 @@
   "publishConfig": {
     "access": "public"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "react-component",
+    "scrollspy",
+    "scroll-spy",
+    "sticky",
+    "fixed nav",
+    "elevator navigation",
+    "anchor navigation",
+    "scroll navigation",
+    "section highlight",
+    "navigation tabs",
+    "scroll-to-anchor",
+    "react scroll spy",
+    "react sticky nav",
+    "scroll spy component",
+    "scrolling tabs",
+    "floating nav",
+    "scroll anchor",
+    "scroll indicator"
+  ]
+
 }
