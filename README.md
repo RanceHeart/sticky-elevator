@@ -53,7 +53,7 @@ yarn add @ranceheart/sticky-elevator
 ## 🔧 Usage
 
 ```tsx
-import { Elevator } from 'react-sticky-elevator'
+import { Elevator } from '@ranceheart/sticky-elevator'
 
 const anchors = ['section1', 'section2', 'section3'];
 const imgs = anchors.map(id => `/images/${id}.png`);
