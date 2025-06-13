@@ -12,11 +12,17 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ranceheart/sticky-elevator.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build --mode lib",
     "build:demo": "vite build --mode demo",
-    "gh:deploy": "yarn build:demo && gh-pages -d gh-pages"
+    "gh:deploy": "yarn build:demo && gh-pages -d gh-pages",
+    "cy:open": "cypress open --browser chrome",
+    "cy:run":  "cypress run  --browser chrome"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -29,15 +35,16 @@
     "@types/react-dom": "^18",
     "@types/smoothscroll-polyfill": "^0.3.4",
     "@vitejs/plugin-react": "^4.5.1",
+    "cypress": "^14.4.1",
     "gh-pages": "^6.3.0",
+    "leva": "^0.10.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "sass": "^1.77.0",
     "typescript": "^5.3.3",
     "vite": "^5.2.0",
     "vite-plugin-css-injected-by-js": "^3.5.2",
-    "vite-plugin-dts": "^3.8.0",
-    "leva": "^0.10.0"
+    "vite-plugin-dts": "^3.8.0"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -53,6 +60,8 @@
     "scrollspy",
     "scroll-spy",
     "sticky",
+    "react nav",
+    "react elevator",
     "fixed nav",
     "elevator navigation",
     "anchor navigation",
@@ -68,5 +77,4 @@
     "scroll anchor",
     "scroll indicator"
   ]
-
 }
