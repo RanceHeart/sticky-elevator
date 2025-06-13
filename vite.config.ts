@@ -26,7 +26,7 @@ export default defineConfig(({mode }) => {
           fileName: f => `elevator.${f}.js`
         },
         rollupOptions: {
-          external: ['react', 'react-dom'],
+          external: ['react', 'react-dom', 'clsx', 'resize-observer-polyfill', 'smoothscroll-polyfill'],
           output: {
             globals: {
               react: 'React',

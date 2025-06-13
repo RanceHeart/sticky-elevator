@@ -252,7 +252,7 @@ export const Elevator: FC<ElevatorProps> = ({
           >
             <img
               src={(active === i ? t.activeImg : t.img).src}
-              alt=""
+              alt={`sticky-elevator-tab-${i}`}
               className={clsx('elevator-item', active === i && 'elevator-item-active')}
             />
           </div>

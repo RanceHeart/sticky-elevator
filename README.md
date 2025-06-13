@@ -7,6 +7,9 @@
 
 一个轻量级的 React 视觉锚点导航（scroll-spy）组件。position: sticky 在某些情况不好使（父元素要求太多），在复杂项目中不好改父元素时，可用此组件替代导航栏行为。
 
+[![GitHub stars](https://img.shields.io/github/stars/RanceHeart/sticky-elevator.svg?style=social)](https://github.com/RanceHeart/sticky-elevator)
+
+
 ### 📌 Demo 1: 锚点自动吸附 + 自动滚动定位
 
 ![demo1-auto-flow-position](https://raw.githubusercontent.com/RanceHeart/sticky-elevator/main/assets/demo1-auto-flow-position.gif)
@@ -143,6 +146,8 @@ MIT © [@RanceHeart](https://github.com/RanceHeart)
 # 🛗 ElevatorNav – Scroll Spy Navigation Component
 
 A lightweight, visual scroll‑spy elevator navigation component for React.
+
+[![GitHub stars](https://img.shields.io/github/stars/RanceHeart/sticky-elevator.svg?style=social)](https://github.com/RanceHeart/sticky-elevator)
 
 ### 📌 Demo 1: Auto anchor snapping with scroll position tracking
 
