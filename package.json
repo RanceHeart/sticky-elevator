@@ -1,6 +1,6 @@
 {
   "name": "@ranceheart/sticky-elevator",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "homepage": "https://ranceheart.github.io/sticky-elevator",
   "description": "A lightweight scroll‑spy elevator nav for React",
   "readmeFilename": "README.md",
